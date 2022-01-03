@@ -4,7 +4,6 @@ namespace Weishaypt\LavaRu;
 
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Weishaypt\LavaRu\Traits\CallerTrait;
 use Weishaypt\LavaRu\Traits\ValidateTrait;

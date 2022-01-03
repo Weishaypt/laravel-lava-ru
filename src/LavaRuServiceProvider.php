@@ -30,7 +30,7 @@ class LavaRuServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/lavaru.php', 'lavaru');
 
         $this->app->singleton('lavaru', function () {
-            return $this->app->make(EnotIo::class);
+            return $this->app->make(LavaRu::class);
         });
 
         $this->app->alias('lavaru', 'LavaRu');
