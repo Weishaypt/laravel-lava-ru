@@ -23,6 +23,15 @@ class LavaRu
     {
         //
     }
+    public static function getClient() {
+        $client = new Client([
+            'base_uri' => 'https://api.lava.ru',
+            'headers' => [
+                'Authorization' => config('lavaru.api_token')
+            ],
+        ]);
+        return $client;
+    }
 
     /**
      * @param $amount
@@ -33,13 +42,9 @@ class LavaRu
      */
     public function getPayUrl($amount, $order_id, $desc = null, $custom_field = null)
     {
-        $client = new Client([
-            'base_uri' => 'https://api.lava.ru'
-        ]);
+        $client = static::getClient();
+
         $response = $client->post('/invoice/create', [
-            'headers' => [
-              'Authorization' => config('lavaru.api_token')
-            ],
             'form_params' => [
                 'wallet_to' => config('lavaru.wallet_id'),
                 'sum' => $amount,
@@ -54,8 +59,6 @@ class LavaRu
         ]);
 
         $data = json_decode($response->getBody()->getContents());
-
-        Log::info(json_encode($data));
 
         if(isset($data->status) && $data->status == 'success') {
             return $data->url;
@@ -116,7 +119,7 @@ class LavaRu
      */
     public function responseError($error)
     {
-        return config('enotio.errors.'.$error, $error);
+        return config('lavaru.errors.'.$error, $error);
     }
 
     /**
