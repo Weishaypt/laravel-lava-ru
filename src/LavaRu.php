@@ -122,6 +122,7 @@ class LavaRu
      */
     public function responseError($error)
     {
+        Log::info($error);
         return new Response(config('lavaru.errors.'.$error, $error), 422);
     }
 
