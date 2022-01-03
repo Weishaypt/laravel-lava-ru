@@ -21,8 +21,7 @@ trait ValidateTrait
             'order_id' => 'required',
             'status' => 'required',
             'pay_time' => 'required',
-            'amount' => 'required',
-            'custom_fields' => 'required',
+            'amount' => 'required'
         ]);
 
         if ($validator->fails()) {
