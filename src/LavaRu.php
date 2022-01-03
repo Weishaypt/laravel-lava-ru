@@ -87,8 +87,6 @@ class LavaRu
      */
     public function handle(Request $request)
     {
-        Log::info(json_encode($request->all()));
-
         // Validate request from gateway
         if (! $this->validateOrderFromHandle($request)) {
             return $this->responseError('validateOrderFromHandle');
@@ -122,7 +120,6 @@ class LavaRu
      */
     public function responseError($error)
     {
-        Log::info($error);
         return new Response(config('lavaru.errors.'.$error, $error), 422);
     }
 
@@ -131,8 +128,6 @@ class LavaRu
      */
     public function responseYES()
     {
-        // Must return 'YES' if paid successful
-
-        return 'YES';
+        return new Response('', 200);
     }
 }
