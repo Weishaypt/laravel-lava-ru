@@ -21,7 +21,7 @@ trait CallerTrait
             throw new InvalidSearchOrder();
         }
 
-        return App::call(config('lavaru.searchOrder'), ['order_id' => $request->input('merchant_id')]);
+        return App::call(config('lavaru.searchOrder'), ['order_id' => $request->input('order_id')]);
     }
 
     /**

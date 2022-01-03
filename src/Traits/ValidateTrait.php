@@ -2,6 +2,7 @@
 
 namespace Weishaypt\LavaRu\Traits;
 
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -36,9 +37,23 @@ trait ValidateTrait
      */
     public function validateApi(Request $request)
     {
+        /**
+         * @var $client Client
+         */
+        $client = static::getClient();
+        $response = $client->post('/invoice/info', [
+            'form_params' => [
+                'id' => $request->invoice_id,
+                'order_id' => $request->order_id
+            ]
+        ]);
 
+        $data = json_decode($response->getBody()->getContents());
+        if(isset($data->invoice) && isset($data->invoice->status)) {
+            if($data->invoice->status == 'success') return  true;
+        }
 
-        return true;
+        return false;
     }
 
     /**
