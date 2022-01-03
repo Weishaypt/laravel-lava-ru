@@ -1,0 +1,36 @@
+{
+    "name": "weishaypt/laravel-lava-ru",
+    "description": "lava.ru payments for Laravel",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "weishaypt",
+            "email": "ya@sanek.dev"
+        }
+    ],
+    "require": {
+        "php": ">=7.2",
+        "laravel/framework": "6.*",
+        "guzzlehttp/guzzle": "~6.2",
+        "ext-json": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Weishaypt\\LavaRu\\Facades\\": "src/Facades",
+            "Weishaypt\\LavaRu\\": "src"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+              "LavaRuServiceProvider"
+            ],
+            "aliases": {
+                "EnotIo": "Weishaypt\\LavaRu\\Facades\\LavaRu"
+            }
+        }
+    }
+}
