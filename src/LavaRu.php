@@ -86,6 +86,8 @@ class LavaRu
      */
     public function handle(Request $request)
     {
+        Log::info(json_encode($request->all()));
+
         // Validate request from gateway
         if (! $this->validateOrderFromHandle($request)) {
             return $this->responseError('validateOrderFromHandle');
