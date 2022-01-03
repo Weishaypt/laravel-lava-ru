@@ -4,6 +4,7 @@ namespace Weishaypt\LavaRu;
 
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Weishaypt\LavaRu\Traits\CallerTrait;
 use Weishaypt\LavaRu\Traits\ValidateTrait;
@@ -49,7 +50,10 @@ class LavaRu
             ]
         ]);
 
-        $data = json_encode($response->getBody()->getContents());
+        $data = json_decode($response->getBody()->getContents());
+
+        Log::info(json_encode($data));
+
         if($data['success']) {
             return $data['url'];
         }
