@@ -46,6 +46,9 @@ class LavaRu
                 'order_id' => $order_id,
                 'subtract' => config('lavaru.subtract'),
                 'custom_fields'  => $custom_field,
+                'hook_url' => config('lavaru.hook_url'),
+                'success_url' => config('lavaru.success_url'),
+                'fail_url' => config('lavaru.fail_url'),
                 'comment' => $desc
             ]
         ]);
@@ -54,9 +57,10 @@ class LavaRu
 
         Log::info(json_encode($data));
 
-        if($data['success']) {
+        if(isset($data->status) && $data->status == 'success') {
             return $data['url'];
         }
+        return null;
     }
 
     /**
