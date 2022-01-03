@@ -29,7 +29,7 @@
               "LavaRuServiceProvider"
             ],
             "aliases": {
-                "EnotIo": "Weishaypt\\LavaRu\\Facades\\LavaRu"
+                "LavaRu": "Weishaypt\\LavaRu\\Facades\\LavaRu"
             }
         }
     }
