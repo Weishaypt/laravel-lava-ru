@@ -4,6 +4,7 @@ namespace Weishaypt\LavaRu;
 
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Weishaypt\LavaRu\Traits\CallerTrait;
@@ -121,7 +122,7 @@ class LavaRu
      */
     public function responseError($error)
     {
-        return config('lavaru.errors.'.$error, $error);
+        return new Response(config('lavaru.errors.'.$error, $error), 422);
     }
 
     /**
