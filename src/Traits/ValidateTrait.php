@@ -4,6 +4,7 @@ namespace Weishaypt\LavaRu\Traits;
 
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
 trait ValidateTrait
@@ -49,6 +50,9 @@ trait ValidateTrait
         ]);
 
         $data = json_decode($response->getBody()->getContents());
+
+        Log::info(json_encode($data));
+
         if(isset($data->invoice) && isset($data->invoice->status)) {
             if($data->invoice->status == 'success') return  true;
         }

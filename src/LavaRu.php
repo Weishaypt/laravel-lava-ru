@@ -86,7 +86,7 @@ class LavaRu
      */
     public function handle(Request $request)
     {
-        // Validate request from FreeKassa
+        // Validate request from gateway
         if (! $this->validateOrderFromHandle($request)) {
             return $this->responseError('validateOrderFromHandle');
         }
