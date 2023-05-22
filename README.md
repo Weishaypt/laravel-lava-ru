@@ -4,7 +4,9 @@ Accept payments via LavaRu ([lava.ru](https://lava.ru/)) using this Laravel fram
 
 - receive payments, adding just the two callbacks
 
-#### Laravel >= 9.*, PHP >= 8.1
+#### Laravel >= 10.*, PHP >= 8.1
+> To use the package for Laravel 9.* use the [2.x](https://github.com/Weishaypt/laravel-lava-ru/tree/2.x) branch
+> 
 > To use the package for Laravel 6.* use the [1.x](https://github.com/Weishaypt/laravel-lava-ru/tree/1.x) branch
 ## Installation
 
